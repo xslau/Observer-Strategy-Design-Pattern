@@ -8,6 +8,7 @@ public class Golfer implements Subject{
     public Golfer(String name){
 
         this.name = name;
+        observers = new ArrayList(); 
     }
 
 	@Override

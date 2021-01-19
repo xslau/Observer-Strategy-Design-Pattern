@@ -7,17 +7,20 @@ public class RoundScoreDisplay implements Observer{
     public RoundScoreDisplay(Subject golfer){
 
         this.golfer = golfer; 
+        golfer.registerObserver(this);
     }
 
     public void update(int strokes, int par){
 
-        golfer.notifyObserver(strokes, par);
+        parTotal += par; 
+        strokesTotal += strokes; 
+
         displayRoundScore();
     }
 
     private void displayRoundScore() {
 
-        System.out.println("Current Round Stats"); 
+        System.out.println("\nRound Stats:"); 
         System.out.println("Par: " + parTotal); 
         System.out.println("Strokes: " + strokesTotal); 
 
@@ -27,7 +30,7 @@ public class RoundScoreDisplay implements Observer{
 
         } else if (strokesTotal == parTotal){
 
-            System.out.println("Made par"); 
+            System.out.println("Making par"); 
 
         } else {
 
